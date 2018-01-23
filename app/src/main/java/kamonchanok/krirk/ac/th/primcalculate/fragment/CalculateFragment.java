@@ -208,10 +208,16 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
             case R.id.btnadd:
                 addABoolean = true;
                 displayADouble = Double.parseDouble(displayString);
+
                 if (num1ADouble==0){
                     num1ADouble = displayADouble;
                 } else {
-                    num1ADouble = num1ADouble + displayADouble;
+                    if (minusABoolean){
+                        num1ADouble = num1ADouble - displayADouble;
+                        minusABoolean = false;
+                    }else {
+                        num1ADouble = num1ADouble + displayADouble;
+                    }
                 }
                 Log.d(tag, "num1 ==>" + num1ADouble);
 
@@ -251,6 +257,13 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                     num1ADouble = Double.parseDouble(displayString);
 
                 }else {
+
+                    if (addABoolean){
+                        num1ADouble = num1ADouble + Double.parseDouble(displayString);
+                        addABoolean = false;
+                    } else {
+                        num1ADouble = num1ADouble - Double.parseDouble(displayString);
+                    }
 
                     num1ADouble = num1ADouble - Double.parseDouble(displayString);
 
